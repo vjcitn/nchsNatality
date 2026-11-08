@@ -1,0 +1,292 @@
+start,end,width,name,group,description
+1,8,8,FILLER,,Filler
+9,12,4,DOB_YY,,Birth Year
+13,14,2,DOB_MM,,Birth Month
+15,18,4,FILLER,,Filler
+19,22,4,DOB_TT,,Time of Birth
+23,23,1,DOB_WK,,Birth Day of Week
+24,31,8,FILLER,,Filler
+32,32,1,BFACIL,,Birth Place Use reporting flag in field 33
+33,33,1,F_BFACIL,,Reporting Flag for Birth Place
+34,49,16,FILLER,,Filler
+50,50,1,BFACIL3,,Birth Place Recode
+51,72,22,FILLER,,Filler
+73,73,1,MAGE_IMPFLG,,"Mother’s Age Imputed Due to missing data, age imputed."
+74,74,1,MAGE_REPFLG,,"Reported Age of Mother Used Flag Due to missing date of birth, reported age used."
+75,76,2,MAGER,,Mother’s Single Years of Age
+77,78,2,MAGER14,,Mother’s Age Recode 14
+79,79,1,MAGER9,,Mother’s Age Recode 9
+80,83,4,FILLER,,Filler
+84,84,1,MBSTATE_REC,,Mother’s Nativity Use reporting flag in field 127
+85,103,19,FILLER,,Filler
+104,104,1,RESTATUS,,Residence Status United States U.S. Territories For detailed geography codes see addendum.
+105,106,2,MRACE31,,Mother’s Race Recode 31 United States and all Outlying Areas of the United States except Puerto Rico
+107,107,1,MRACE6,,Mother’s Race Recode 6 United States and all Outlying Areas of the United States except Puerto Rico
+108,109,2,MRACE15,,Mother’s Race Recode 15 United States and all Outlying Areas of the United States except Puerto Rico
+110,110,1,FILLER,,Filler
+111,111,1,MRACEIMP,,Mother’s Race Imputed Flag
+112,112,1,MHISPX,,Mother’s Hispanic Origin
+113,114,2,FILLER,,Filler
+115,115,1,MHISP_R,,Mother’s Hispanic Origin Recode
+116,116,1,F_MHISP,,Reporting Flag for Mother’s Origin
+117,117,1,MRACEHISP,,"Mother’s Race/Hispanic Origin Based on single/multiple-race (fields 105-106, 107, and 108-109)."
+118,118,1,FILLER,,Filler
+119,119,1,MAR_P,,Paternity Acknowledged
+120,120,1,DMAR,,Marital Status United States and all Outlying Areas of the United States except Puerto Rico Puerto Rico
+121,121,1,MAR_IMP,,Mother’s Marital Status Imputed
+122,122,1,FILLER,,Filler
+123,123,1,F_MAR_P,,Reporting Flag for Paternity Acknowledged
+124,124,1,MEDUC,,Mother’s Education
+125,125,1,FILLER,,Filler
+126,126,1,F_MEDUC,,Reporting Flag for Education of Mother
+127,127,1,F_MBCntry,,Reporting Flag for Mother’s Birth Country
+128,141,14,FILLER,,Filler M
+142,142,1,FAGERPT_FLG,,Father’s Reported Age Used
+143,146,4,FILLER,,Filler
+147,148,2,FAGECOMB,,Father’s Combined Age
+149,150,2,FAGEREC11,,Father’s Age Recode 11
+151,152,2,FRACE31,,Father’s Race Recode 31
+153,153,1,FRACE6,,Father’s Race Recode 6
+154,155,2,FRACE15,,Father’s Race Recode 15
+156,158,3,FILLER,,Filler
+159,159,1,FHISPX,,Father’s Hispanic Origin
+160,160,1,FHISP_R,,Father’s Hispanic Origin Recode
+161,161,1,F_FHISP,,Reporting Flag for Father’s Origin
+162,162,1,FRACEHISP,,"Father’s Race/Hispanic Origin Based on single/multiple-race (fields 151-152, 153, and 154-155)."
+163,163,1,FEDUC,,Father’s Education Use reporting flag in field 165
+164,164,1,FILLER,,Filler
+165,165,1,f_FEDUC,,Reporting Flag for Education of Father
+166,170,5,FILLER,,Filler
+171,172,2,PRIORLIVE,,Prior Births Now Living
+173,174,2,PRIORDEAD,,Prior Births Now Dead
+175,176,2,PRIORTERM,,Prior Other Terminations Use reporting flag in field 219
+177,178,2,FILLER,,Filler
+179,179,1,LBO_REC,,Live Birth Order Recode
+180,181,2,FILLER,,Filler
+182,182,1,TBO_REC,,Total Birth Order Recode Use reporting flag in field 220
+183,197,15,FILLER,,Filler
+198,200,3,ILLB_R,,Interval Since Last Live Birth Recode Use reporting flag in field 126
+201,202,2,ILLB_R11,,Interval Since Last Live Birth Recode 11 Use reporting flag in field 126
+203,205,3,FILLER,,Filler
+206,208,3,ILOP_R,,Interval Since Last Other Pregnancy Recode Use reporting flag in field 221
+209,210,2,ILOP_R11,,Interval Since Last Other Pregnancy Recode 11 Use reporting flag in field 221
+211,213,3,FILLER,,Filler
+214,216,3,ILP_R,,Interval Since Last Pregnancy Recode Use reporting flag in field 222
+217,218,2,ILP_R11,,Interval Since Last Pregnancy Recode 11 Use reporting flag in field 222
+219,219,1,F_OTno,,Reporting Flag for Prior Other Terminations
+220,220,1,F_TBO,,Reporting Flag for Total Birth Order
+221,221,1,F_ILOO,,Reporting Flag for Interval Since Last Other Outcome
+222,222,1,F_ILP,,Reporting Flag for Interval Since Last Pregnancy
+223,223,1,FILLER,,Filler
+224,225,2,PRECARE,,Month Prenatal Care Began
+226,226,1,F_MPCB,,Reporting Flag for Month Prenatal Care Began
+227,227,1,PRECARE5,,Month Prenatal Care Began Recode
+228,237,10,FILLER,,Filler
+238,239,2,PREVIS,,Number of Prenatal Visits
+240,241,2,FILLER,,Filler
+242,243,2,PREVIS_REC,,Number of Prenatal Visits Recode
+244,244,1,F_TPCV,,Reporting Flag for Total Prenatal Care Visits
+245,250,6,FILLER,,Filler
+251,251,1,WIC,,WIC
+252,252,1,F_WIC,,Reporting Flag for WIC
+253,254,2,CIG_0,,Cigarettes Before Pregnancy
+255,256,2,CIG_1,,Cigarettes 1st Trimester
+257,258,2,CIG_2,,Cigarettes 2nd Trimester
+259,260,2,CIG_3,,Cigarettes 3rd Trimester
+261,261,1,CIG0_R,,Cigarettes Before Pregnancy Recode
+262,262,1,CIG1_R,,Cigarettes 1st Trimester Recode
+263,263,1,CIG2_R,,Cigarettes 2nd Trimester Recode
+264,264,1,CIG3_R,,Cigarettes 3rd Trimester Recode
+265,265,1,F_CIGS_0,,Reporting Flag for Cigarettes before Pregnancy
+266,266,1,F_CIGS_1,,Reporting Flag for Cigarettes 1st Trimester
+267,267,1,F_CIGS_2,,Reporting Flag for Cigarettes 2nd Trimester
+268,268,1,F_CIGS_3,,Reporting Flag for Cigarettes 3rd Trimester
+269,269,1,CIG_REC,,Cigarette Recode
+270,270,1,F_TOBACO,,Reporting Flag for Tobacco use
+271,279,9,FILLER,,Filler
+280,281,2,M_Ht_In,,Mother’s Height in Total Inches
+282,282,1,F_M_HT,,Reporting Flag for Mother’s Height
+283,286,4,BMI,,Body Mass Index Use reporting flag in field 282
+287,287,1,BMI_R,,Body Mass Index Recode Use reporting flag in field 282
+288,291,4,FILLER,,Filler
+292,294,3,PWgt_R,,Pre-pregnancy Weight Recode
+295,295,1,F_PWGT,,Reporting Flag for Pre-pregnancy Weight
+296,298,3,FILLER,,Filler
+299,301,3,DWgt_R,,Delivery Weight Recode
+302,302,1,FILLER,,Filler
+303,303,1,F_DWGT,,Reporting Flag for Delivery Weight
+304,305,2,WTGAIN,,Weight Gain
+306,306,1,WTGAIN_REC,,Weight Gain Recode
+307,307,1,F_WTGAIN,,Reporting Flag for Weight Gain
+308,312,5,FILLER,,Filler
+313,313,1,RF_PDIAB,Risk Factors,Pre-pregnancy Diabetes
+314,314,1,RF_GDIAB,Risk Factors,Gestational Diabetes
+315,315,1,RF_PHYPE,Risk Factors,Pre-pregnancy Hypertension
+316,316,1,RF_GHYPE,Risk Factors,Gestational Hypertension
+317,317,1,RF_EHYPE,Risk Factors,Hypertension Eclampsia
+318,318,1,RF_PPTERM,Risk Factors,Previous Preterm Birth
+319,319,1,F_RF_PDIAB,Risk Factors,Reporting Flag for Pre-pregnancy Diabetes
+320,320,1,F_RF_GDIAB,Risk Factors,Reporting Flag for Gestational Diabetes
+321,321,1,F_RF_PHYPER,Risk Factors,Reporting Flag for Pre-pregnancy Hypertension
+322,322,1,F_RF_GHYPER,Risk Factors,Reporting Flag for Gestational Hypertension
+323,323,1,F_RF_ECLAMP,Risk Factors,Reporting Flag for Hypertension Eclampsia
+324,324,1,F_RF_PPB,Risk Factors,Reporting Flag for Previous Preterm Birth
+325,325,1,RF_INFTR,Risk Factors,Infertility Treatment Used
+326,326,1,RF_FEDRG,Risk Factors,Fertility Enhancing Drugs
+327,327,1,RF_ARTEC,Risk Factors,Asst. Reproductive Technology
+328,328,1,f_RF_INFT,Risk Factors,Reporting Flag for Infertility Treatment
+329,329,1,F_RF_INF_DRG,Risk Factors,Reporting Flag for Fertility Enhance Drugs
+330,330,1,F_RF_INF_ART,Risk Factors,Reporting Flag for Reproductive Technology
+331,331,1,RF_CESAR,Risk Factors,Previous Cesarean
+332,333,2,RF_CESARN,Risk Factors,Number of Previous Cesareans
+334,334,1,FILLER,Risk Factors,Filler
+335,335,1,F_RF_CESAR,Risk Factors,Reporting Flag for Previous Cesarean
+336,336,1,F_RF_NCESAR,Risk Factors,Reporting Flag for Number of Previous Cesareans
+337,337,1,NO_RISKS,Risk Factors,No Risk Factors Reported
+338,342,5,FILLER,Risk Factors,Filler
+343,343,1,IP_GON,Infections Present,Gonorrhea
+344,344,1,IP_SYPH,Infections Present,Syphilis
+345,345,1,IP_CHLAM,Infections Present,Chlamydia
+346,346,1,IP_HEPB,Infections Present,Hepatitis B
+347,347,1,IP_HEPC,Infections Present,Hepatitis C
+348,348,1,F_IP_GONOR,Infections Present,Reporting Flag for Gonorrhea
+349,349,1,F_IP_SYPH,Infections Present,Reporting Flag for Syphilis
+350,350,1,F_IP_CHLAM,Infections Present,Reporting Flag for Chlamydia
+351,351,1,F_IP_HEPATB,Infections Present,Reporting Flag for Hepatitis B
+352,352,1,F_IP_HEPATC,Infections Present,Reporting Flag for Hepatitis C
+353,353,1,NO_INFEC,Infections Present,No Infections Reported
+354,358,5,FILLER,Infections Present,Filler
+359,359,1,FILLER,Obstetric Procedures,Filler
+360,360,1,OB_ECVS,Obstetric Procedures,Successful External Cephalic Version
+361,361,1,OB_ECVF,Obstetric Procedures,Failed External Cephalic Version
+362,362,1,FILLER,Obstetric Procedures,Filler
+363,363,1,F_OB_SUCC,Obstetric Procedures,Reporting Flag for Successful External Cephalic Version0 1
+364,364,1,F_OB_FAIL,Obstetric Procedures,Reporting Flag for Failed External Cephalic Version
+365,382,18,FILLER,Obstetric Procedures,Filler 383-400 18 Characteristics of Labor and Delivery
+383,383,1,LD_INDL,,Induction of Labor
+384,384,1,LD_AUGM,,Augmentation of Labor
+385,385,1,LD_STER,,Steroids
+386,386,1,LD_ANTB,,Antibiotics
+387,387,1,LD_CHOR,,Chorioamnionitis
+388,388,1,LD_ANES,,Anesthesia
+389,389,1,F_LD_INDL,,Reporting Flag for Induction of Labor
+390,390,1,F_LD_AUGM,,Reporting Flag for Augmentation of Labor
+391,391,1,F_LD_STER,,Reporting Flag for Steroids
+392,392,1,F_LD_ANTB,,Reporting Flag for Antibiotics
+393,393,1,F_LD_CHOR,,Reporting Flag for Chorioamnionitis
+394,394,1,F_LD_ANES,,Reporting Flag for Anesthesia
+395,395,1,NO_LBRDLV,,No Characteristics of Labor Reported
+396,400,5,FILLER,,Filler 401-414 14 Method of Delivery
+401,401,1,ME_PRES,,Fetal Presentation at Delivery
+402,402,1,ME_ROUT,,Final Route & Method of Delivery
+403,403,1,ME_TRIAL,,Trial of Labor Attempted (if cesarean)
+404,404,1,F_ME_PRES,,Reporting Flag for Fetal Presentation
+405,405,1,F_ME_ROUT,,Reporting Flag for Final Route and Method of Deliver 0 1
+406,406,1,F_ME_TRIAL,,Reporting Flag for Trial of Labor Attempted
+407,407,1,RDMETH_REC,,Delivery Method Recode
+408,408,1,DMETH_REC,,Delivery Method Recode
+409,409,1,F_DMETH_REC,,Reporting Flag for Method of Delivery Recode
+410,414,5,FILLER,,Filler
+415,415,1,MM_MTR,Maternal Morbidity,Maternal Transfusion
+416,416,1,MM_PLAC,Maternal Morbidity,Perineal Laceration
+417,417,1,MM_RUPT,Maternal Morbidity,Ruptured Uterus
+418,418,1,MM_UHYST,Maternal Morbidity,Unplanned Hysterectomy
+419,419,1,MM_AICU,Maternal Morbidity,Admit to Intensive Care
+420,420,1,FILLER,Maternal Morbidity,Filler
+421,421,1,F_MM_MTR,Maternal Morbidity,Reporting Flag for Maternal Transfusion
+422,422,1,F_MM_PLAC,Maternal Morbidity,Reporting Flag for Perineal Laceration
+423,423,1,F_MM_RUPT,Maternal Morbidity,Reporting Flag for Ruptured Uterus
+424,424,1,F_MM_UHYST,Maternal Morbidity,Reporting Flag for Unplanned Hysterectomy
+425,425,1,F_MM_AICU,Maternal Morbidity,Reporting Flag for Admission to Intensive Care
+426,426,1,FILLER,Maternal Morbidity,Filler
+427,427,1,NO_MMORB,Maternal Morbidity,No Maternal Morbidity Reported
+428,432,5,FILLER,Maternal Morbidity,Filler
+433,433,1,ATTEND,,Attendant at Birth Use reporting flag in field 439
+434,434,1,MTRAN,,Mother Transferred Use reporting flag in field 126
+435,435,1,PAY,,Payment Source for Delivery
+436,436,1,PAY_REC,,Payment Recode
+437,437,1,F_PAY,,Reporting Flag for Source of Payment
+438,438,1,F_PAY_REC,,Reporting Flag for Payment Recode
+439,439,1,F_ATTEND,,Reporting Flag for Attendant
+440,443,4,FILLER,,Filler
+444,445,2,APGAR5,,Five Minute APGAR Score
+446,446,1,APGAR5R,,Five Minute APGAR Recode
+447,447,1,F_APGAR5,,Reporting Flag for Five minute APGAR
+448,449,2,APGAR10,,Ten Minute APGAR Score
+450,450,1,APGAR10R,,Ten Minute APGAR Recode
+451,453,3,FILLER,,Filler
+454,454,1,DPLURAL,,Plurality Recode
+455,455,1,FILLER,,Filler
+456,456,1,IMP_PLUR,,Plurality Imputed
+457,458,2,FILLER,,Filler
+459,459,1,SETORDER_R,,Set Order Recode
+460,474,15,FILLER,,Filler
+475,475,1,SEX,,Sex of Infant
+476,476,1,IMP_SEX,,Imputed Sex
+477,478,2,DLMP_MM,,Last Normal Menses Month Use reporting flag in field 513
+479,480,2,FILLER,,Filler
+481,484,4,DLMP_YY,,Last Normal Menses Year Use reporting flag in field 512
+485,487,3,FILLER,,Filler
+488,488,1,COMPGST_IMP,,Combined Gestation Imputation Flag
+489,489,1,OBGEST_FLG,,Obstetric Estimate of Gestation Used Flag
+490,491,2,COMBGEST,,Combined Gestation – Detail in Weeks
+492,493,2,GESTREC10,,Combined Gestation Recode 10
+494,494,1,GESTREC3,,Combined Gestation Recode 3
+495,497,3,FILLER,,Filler
+498,498,1,LMPUSED,,Combined Gestation Used Flag
+499,500,2,OEGest_Comb,,Obstetric Estimate Edited (NCHS standard item)
+501,502,2,OEGest_R10,,Obstetric Estimate Recode10 (NCHS standard item)
+503,503,1,OEGest_R3,,Obstetric Estimate Recode 3 (NCHS Standard Item)
+504,507,4,DBWT,,Birth Weight – Detail in Grams (Edited)
+508,508,1,FILLER,,Filler
+509,510,2,BWTR12,,Birth Weight Recode 12
+511,511,1,BWTR4,,Birth Weight Recode 4
+512,512,1,F_LMPyy,,Reporting Flag for Date of Last Normal Menses Year
+513,516,4,FILLER,,Filler
+517,517,1,AB_AVEN1,Abnormal Conditions of the Newborn,Assisted Ventilation (immediately)
+518,518,1,AB_AVEN6,Abnormal Conditions of the Newborn,Assisted Ventilation > 6 hrs
+519,519,1,AB_NICU,Abnormal Conditions of the Newborn,Admission to NICU
+520,520,1,AB_SURF,Abnormal Conditions of the Newborn,Surfactant
+521,521,1,AB_ANTI,Abnormal Conditions of the Newborn,Antibiotics for Newborn
+522,522,1,AB_SEIZ,Abnormal Conditions of the Newborn,Seizures
+523,523,1,FILLER,Abnormal Conditions of the Newborn,Filler
+524,524,1,F_AB_VENT,Abnormal Conditions of the Newborn,Reporting Flag for Assisted Ventilation (immediately)
+525,525,1,F_AB_VENT6,Abnormal Conditions of the Newborn,Reporting Flag for Assisted Ventilation >6 hrs
+526,526,1,F_AB_NIUC,Abnormal Conditions of the Newborn,Reporting Flag for Admission to NICU
+527,527,1,F_AB_SURFAC,Abnormal Conditions of the Newborn,Reporting Flag for Surfactant
+528,528,1,F_AB_ANTIBIO,Abnormal Conditions of the Newborn,Reporting Flag for Antibiotics
+529,529,1,F_AB_SEIZ,Abnormal Conditions of the Newborn,Reporting Flag for Seizures
+530,530,1,FILLER,Abnormal Conditions of the Newborn,Filler
+531,531,1,NO_ABNORM,Abnormal Conditions of the Newborn,No Abnormal Conditions Checked
+532,536,5,FILLER,Abnormal Conditions of the Newborn,Filler
+537,537,1,CA_ANEN,Congenital Anomalies of the Newborn,Anencephaly
+538,538,1,CA_MNSB,Congenital Anomalies of the Newborn,Meningomyelocele / Spina Bifida
+539,539,1,CA_CCHD,Congenital Anomalies of the Newborn,Cyanotic Congenital Heart Disease
+540,540,1,CA_CDH,Congenital Anomalies of the Newborn,Congenital Diaphragmatic Hernia
+541,541,1,CA_OMPH,Congenital Anomalies of the Newborn,Omphalocele
+542,542,1,CA_GAST,Congenital Anomalies of the Newborn,Gastroschisis
+543,543,1,F_CA_ANEN,Congenital Anomalies of the Newborn,Reporting Flag for Anencephaly
+544,544,1,F_CA_MENIN,Congenital Anomalies of the Newborn,Reporting Flag for Meningomyelocele/Spina Bifida
+545,545,1,F_CA_HEART,Congenital Anomalies of the Newborn,Reporting Flag for Cyanotic Congenital Heart Disease 0 1
+546,546,1,F_CA_HERNIA,Congenital Anomalies of the Newborn,Reporting Flag for Congenital Diaphragmatic Hernia
+547,547,1,F_CA_OMPHA,Congenital Anomalies of the Newborn,Reporting Flag for Omphalocele
+548,548,1,F_CA_GASTRO,Congenital Anomalies of the Newborn,Reporting Flag for Gastroschisis
+549,549,1,CA_LIMB,Congenital Anomalies of the Newborn,Limb Reduction Defect
+550,550,1,CA_CLEFT,Congenital Anomalies of the Newborn,Cleft Lip w/ or w/o Cleft Palate
+551,551,1,CA_CLPAL,Congenital Anomalies of the Newborn,Cleft Palate alone
+552,552,1,CA_DOWN,Congenital Anomalies of the Newborn,Down Syndrome
+553,553,1,CA_DISOR,Congenital Anomalies of the Newborn,Suspected Chromosomal Disorder
+554,554,1,CA_HYPO,Congenital Anomalies of the Newborn,Hypospadias
+555,555,1,F_CA_LIMB,Congenital Anomalies of the Newborn,Reporting Flag for Limb Reduction Defect
+556,556,1,F_CA_CLEFTLP,Congenital Anomalies of the Newborn,Reporting Flag for Cleft Lip with or without Cleft Palate0 1
+557,557,1,F_CA_CLEFT,Congenital Anomalies of the Newborn,Reporting Flag for Cleft Palate Alone
+558,558,1,F_CA_DOWNS,Congenital Anomalies of the Newborn,Reporting Flag for Down Syndrome
+559,559,1,F_CA_CHROM,Congenital Anomalies of the Newborn,Reporting Flag for Suspected Chromosomal Disorder
+560,560,1,F_CA_HYPOS,Congenital Anomalies of the Newborn,Reporting Flag for Hypospadias
+561,561,1,NO_CONGEN,Congenital Anomalies of the Newborn,No Congenital Anomalies Checked
+562,566,5,FILLER,Congenital Anomalies of the Newborn,Filler
+567,567,1,ITRAN,,Infant Transferred Use reporting flag in field 126
+568,568,1,ILIVE,,Infant Living at Time of Report Use reporting flag in field 126
+569,569,1,BFED,,Infant Breastfed at Discharge
+570,570,1,F_BFED,,Reporting Flag for Breastfed at Discharge
+571,1330,760,FILLER,,Filler

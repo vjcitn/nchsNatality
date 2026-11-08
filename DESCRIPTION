@@ -1,0 +1,26 @@
+Package: nchsNatality
+Type: Package
+Title: Read and Losslessly Pack NCHS Natality Public-Use Files
+Version: 0.0.1
+Authors@R: person("Vince", "Carey", email = "stvjc@channing.harvard.edu",
+    role = c("aut", "cre"))
+Description: Reads the fixed-width natality (birth) public-use files from the
+    US National Center for Health Statistics using a record layout and value
+    labels extracted from the NCHS User Guide. Fields can be returned as typed
+    columns or as labelled factors. The whole file can be packed into compact,
+    sharded Parquet files from which every record can be rebuilt exactly, with
+    a verification step that confirms this.
+License: Artistic-2.0
+Encoding: UTF-8
+Depends: R (>= 4.1.0)
+Imports: data.table, vroom, utils
+Suggests: DBI, duckdb (>= 1.1.0), testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+NeedsCompilation: no
+Packaged: 2026-11-08 15:22:16 UTC; root
+Author: Vince Carey [aut, cre]
+Maintainer: Vince Carey <stvjc@channing.harvard.edu>
+URL: https://github.com/vjcitn/nchsNatality
+BugReports: https://github.com/vjcitn/nchsNatality/issues
