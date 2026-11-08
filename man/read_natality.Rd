@@ -5,17 +5,19 @@
 \title{Read the natality public-use file}
 \usage{
 read_natality(
-  file,
+  file = NULL,
   cols = NULL,
   n_max = Inf,
   raw = FALSE,
   na_unknown = TRUE,
   year = 2025,
+  parquet_dir = NULL,
   ...
 )
 }
 \arguments{
-\item{file}{Path to the fixed-width natality file.}
+\item{file}{Path to the fixed-width natality file. \code{NULL} (the default)
+resolves from \code{NCHS_NAT_PATH} or \code{NCHS_NAT_PARQUET}; see above.}
 
 \item{cols}{Field names to read. The default is every field except FILLER.}
 
@@ -29,7 +31,12 @@ stated" and "not applicable" codes (e.g. DBWT 9999, BMI 99.9, ILLB_R
 
 \item{year}{Data year; see \code{\link[=natality_years]{natality_years()}}.}
 
-\item{...}{Passed to \code{\link[vroom:vroom_fwf]{vroom::vroom_fwf()}}, e.g. \code{num_threads}.}
+\item{parquet_dir}{A directory written by \code{\link[=natality_pack]{natality_pack()}} to query
+instead of \code{file}. \code{NULL} (the default) resolves from \code{NCHS_NAT_PARQUET};
+see above. Ignored if \code{file} is given explicitly.}
+
+\item{...}{Passed to \code{\link[vroom:vroom_fwf]{vroom::vroom_fwf()}} when reading text, e.g.
+\code{num_threads}. Ignored when reading from Parquet.}
 }
 \value{
 A \code{data.table}. Numeric fields (\code{kind == "numeric"} in
@@ -39,15 +46,27 @@ guide uses for items not on the certificate or from non-reporting areas,
 are \code{NA}.
 }
 \description{
-Reads fields by byte position with \code{\link[vroom:vroom_fwf]{vroom::vroom_fwf()}}. Bytes beyond the
-last documented field are never read, so a file whose records are longer
-than the guide says is read correctly as long as the documented fields are
+Reads fields by byte position with \code{\link[vroom:vroom_fwf]{vroom::vroom_fwf()}}, or, if a sharded
+Parquet directory (as written by \code{\link[=natality_pack]{natality_pack()}}) is available, queries
+that instead via DuckDB — same result, far less I/O. Bytes beyond the last
+documented field are never read, so a file whose records are longer than
+the guide says is read correctly as long as the documented fields are
 where the guide puts them (see \code{\link[=diagnose_layout]{diagnose_layout()}}).
 }
-\examples{
-\dontrun{
-f <- "Nat2025PublicUS.c20260624.r20260922.txt"
-z <- read_natality(f, n_max = 10000)
-z <- read_natality(f, cols = c("MAGER", "DBWT", "COMBGEST", "SEX"))
+\section{Choosing text vs Parquet}{
+
+\code{file} and \code{parquet_dir} default to \code{NULL}, meaning "resolve from the
+environment": \code{NCHS_NAT_PARQUET}, if it names a directory with a
+\code{storage.csv} and at least one \verb{*.parquet} file in it, is used; otherwise
+\code{NCHS_NAT_PATH} is used. Passing \code{file} or \code{parquet_dir} explicitly pins
+the source and skips that resolution. Either way the result has the same
+shape: same columns, same types, same \code{na_unknown} sentinel handling — see
+\verb{inst/adrs/} for the reasoning.
 }
+
+\examples{
+if (nchar(f <- Sys.getenv("NCHS_NAT_PATH"))>0) {
+  z <- read_natality(f, n_max = 10000)
+  z <- read_natality(f, cols = c("MAGER", "DBWT", "COMBGEST", "SEX"))
+  } else { "NCHS_NAT_PATH not set in visible environment" }
 }
