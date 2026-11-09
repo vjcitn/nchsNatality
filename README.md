@@ -2,7 +2,7 @@
 
 **Read and losslessly pack NCHS natality public-use files.**
 
-The [NCHS natality public-use file](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm)
+The [NCHS natality public-use file](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable)
 is a fixed-width text file — one record per birth, no delimiters, no quoting.
 That defeats delimiter-sniffing readers such as `data.table::fread()`.
 `nchsNatality` reads the file by byte position from the official record layout,
@@ -91,6 +91,13 @@ Options:
 - **GitHub Releases** – release assets can be up to 2 GB each.
 - **Git LFS** – transparent large-file storage; free tier 1 GB.
 - **Zenodo / OSF / AWS S3** – for public archival distribution.
+
+## Data source
+
+This package does not bundle or redistribute any natality data. Obtain the
+fixed-width public-use file yourself from NCHS at
+<https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>
+and point `read_natality()` / `NCHS_NAT_PATH` at your local copy.
 
 ## Legal
 

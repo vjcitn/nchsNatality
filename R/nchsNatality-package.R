@@ -15,6 +15,11 @@
 #' * [natality_layout()] and [natality_values()] return the layout and the
 #'   value labels.
 #'
+#' @section Data source:
+#' The natality public-use files themselves are downloaded from NCHS at
+#' <https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+#' this package does not bundle or redistribute them.
+#'
 #' @section Layout source:
 #' "User Guide to the 2025 Natality Public Use File" (NCHS), record layout.
 #' `data-raw/parse_userguide.py` in the source package regenerates the tables

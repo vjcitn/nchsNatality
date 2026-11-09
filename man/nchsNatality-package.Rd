@@ -24,6 +24,13 @@ lossless; \code{\link[=natality_verify]{natality_verify()}} and \code{\link[=nat
 value labels.
 }
 }
+\section{Data source}{
+
+The natality public-use files themselves are downloaded from NCHS at
+\url{https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable};
+this package does not bundle or redistribute them.
+}
+
 \section{Layout source}{
 
 "User Guide to the 2025 Natality Public Use File" (NCHS), record layout.

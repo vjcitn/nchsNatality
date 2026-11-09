@@ -3,6 +3,12 @@
 \name{natality_values}
 \alias{natality_values}
 \title{Value labels of the natality public-use file}
+\source{
+The underlying public-use file is downloaded from NCHS at
+\url{https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable};
+these value labels describe its codes and are not themselves downloaded
+from there.
+}
 \usage{
 natality_values(year = 2025)
 }

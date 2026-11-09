@@ -3,6 +3,11 @@
 \name{read_natality}
 \alias{read_natality}
 \title{Read the natality public-use file}
+\source{
+The fixed-width file itself is downloaded from NCHS at
+\url{https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable};
+this function reads a copy already on disk and does not download it.
+}
 \usage{
 read_natality(
   file = NULL,
@@ -61,7 +66,10 @@ environment": \code{NCHS_NAT_PARQUET}, if it names a directory with a
 \code{NCHS_NAT_PATH} is used. Passing \code{file} or \code{parquet_dir} explicitly pins
 the source and skips that resolution. Either way the result has the same
 shape: same columns, same types, same \code{na_unknown} sentinel handling — see
-\verb{inst/adrs/} for the reasoning.
+\verb{inst/adrs/} for the reasoning. Row order is \strong{not} part of that
+contract: \code{\link[=natality_pack]{natality_pack()}} sorts and shards rows for compression (see its
+documentation), so reading from Parquet returns the same rows as from
+text, as a set, but not necessarily in the same order.
 }
 
 \examples{

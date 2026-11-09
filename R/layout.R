@@ -63,6 +63,10 @@ natality_years <- function() {
 #' @return A `data.table` with columns `start`, `end`, `width`, `name`, `group`,
 #'   `description`, `kind` (`"numeric"`, `"code"` or `"filler"`) and `col`, a
 #'   unique column name (`FILLER_<start>` for fillers, the field name otherwise).
+#' @source The underlying public-use file is downloaded from NCHS at
+#'   <https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+#'   this layout describes its byte positions and is not itself downloaded
+#'   from there.
 #' @examples
 #' lay <- natality_layout()
 #' lay[name == "DBWT"]
@@ -95,6 +99,10 @@ natality_layout <- function(year = 2025, record_length = NULL) {
 #'   `block` 1 is the coding for US records. `block` 2 is the separate coding
 #'   for Puerto Rico and the territories, where the guide gives one (RESTATUS,
 #'   DMAR). Codes such as `"0227-8165"` are documented ranges of a numeric field.
+#' @source The underlying public-use file is downloaded from NCHS at
+#'   <https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+#'   these value labels describe its codes and are not themselves downloaded
+#'   from there.
 #' @examples
 #' v <- natality_values()
 #' v[name == "SEX"]
