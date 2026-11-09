@@ -1,0 +1,62 @@
+---
+title: "Variable dictionary"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Variable dictionary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+have_dt <- requireNamespace("DT", quietly = TRUE)
+```
+
+This vignette lists every field in the natality public-use file record
+layout -- its description, byte width and type -- together with the value
+labels for every coded field. Both tables come from [natality_layout()] and
+[natality_values()] and need no external resource (`NCHS_NAT_PATH` /
+`NCHS_NAT_PARQUET`) to build.
+
+```{r libs}
+library(nchsNatality)
+library(data.table)
+```
+
+## Fields
+
+One row per field that is actually readable (the `FILLER` blocks that pad
+out unused bytes are omitted). `kind` is `"numeric"` for fields read as
+numbers and `"code"` for fields whose values are a fixed set of labelled
+codes -- see the [Value labels](#value-labels) table below for those.
+
+```{r fields}
+fields <- natality_layout()[kind != "filler",
+                             .(name, description, kind, width)]
+
+if (have_dt) {
+  DT::datatable(fields, rownames = FALSE, filter = "top",
+                 options = list(pageLength = 15))
+} else {
+  knitr::kable(fields)
+}
+```
+
+## Value labels
+
+Every documented code and its label, for every coded field (`block` 1 is
+the coding used for US records; `block` 2, where present, is the separate
+coding for Puerto Rico and the other territories -- see `?natality_values`).
+Numeric fields have no entry here; their sentinel/"unknown" codes, where
+documented, are also listed in this table (e.g. `DBWT` 9999).
+
+```{r values}
+values <- natality_values()
+
+if (have_dt) {
+  DT::datatable(values, rownames = FALSE, filter = "top",
+                 options = list(pageLength = 15))
+} else {
+  knitr::kable(values)
+}
+```

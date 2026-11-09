@@ -14,7 +14,9 @@ License: Artistic-2.0
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
 Imports: data.table, vroom, utils
-Suggests: DBI, duckdb (>= 1.1.0), testthat (>= 3.0.0)
+Suggests: DBI, duckdb (>= 1.1.0), testthat (>= 3.0.0), knitr, rmarkdown,
+    dplyr, arrow, DT
+VignetteBuilder: knitr
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1

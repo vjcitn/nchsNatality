@@ -308,6 +308,48 @@ natality_report <- function(out_dir, file = NULL) {
   rep[]
 }
 
+## ---- read_natality() parquet backend ------------------------------------------
+
+## Serves read_natality() from a natality_pack() directory instead of the raw
+## text file. Keeps the same output contract as the vroom path (same columns,
+## types, na_unknown handling) via the shared .apply_numeric_typing() in
+## read.R. See inst/adrs/0003-dual-backend-common-contract.md.
+.read_natality_parquet <- function(dir, cols, n_max, raw, na_unknown, year) {
+  .need_duckdb()
+  tb <- .nat_tables(year)
+  lay <- natality_layout(year)[kind != "filler"]
+  st <- .storage(dir)
+
+  if (!is.null(cols)) {
+    bad <- setdiff(cols, lay$name)
+    if (length(bad)) stop("unknown field(s): ", paste(bad, collapse = ", "), call. = FALSE)
+    blank <- intersect(cols, st[rule == "blank", name])
+    if (length(blank))
+      stop("field(s) blank in every record of this parquet directory, not stored: ",
+           paste(blank, collapse = ", "), call. = FALSE)
+  } else {
+    cols <- intersect(lay$name, st[rule != "blank", name])
+  }
+  sel <- st[match(cols, name)]
+
+  expr <- ifelse(sel$rule == "int",
+                 sprintf("lpad(CAST(%s AS VARCHAR), %d, '0')", .q(sel$col), sel$width),
+                 .q(sel$col))
+  if (!raw) expr <- .q(sel$col)   # typed/trimmed as stored; see .apply_numeric_typing()
+  limit <- if (is.finite(n_max)) sprintf("\nLIMIT %d", as.integer(n_max)) else ""
+  sql <- sprintf("SELECT\n  %s\nFROM %s%s",
+                 paste(expr, "AS", .q(sel$col), collapse = ",\n  "),
+                 sprintf("read_parquet(%s)", .lit(file.path(normalizePath(dir), "*.parquet"))),
+                 limit)
+
+  con <- .connect()
+  on.exit(.disconnect(con))
+  dt <- DBI::dbGetQuery(con, sql)
+  setDT(dt)
+  if (raw) return(dt[])
+  .apply_numeric_typing(dt, lay[name %in% cols], tb, na_unknown)
+}
+
 ## ---- rebuild / verify ---------------------------------------------------------
 
 .storage <- function(out_dir) {
