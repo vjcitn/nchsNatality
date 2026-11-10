@@ -3,6 +3,12 @@
 \name{natality_layout}
 \alias{natality_layout}
 \title{Record layout of the natality public-use file}
+\source{
+The underlying public-use file is downloaded from NCHS at
+\url{https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable};
+this layout describes its byte positions and is not itself downloaded
+from there.
+}
 \usage{
 natality_layout(year = 2025, record_length = NULL)
 }

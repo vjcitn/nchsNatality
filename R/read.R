@@ -115,6 +115,9 @@ check_natality_file <- function(file, nbytes = 100000L, year = 2025) {
 #' documentation), so reading from Parquet returns the same rows as from
 #' text, as a set, but not necessarily in the same order.
 #'
+#' @source The fixed-width file itself is downloaded from NCHS at
+#'   <https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+#'   this function reads a copy already on disk and does not download it.
 #' @param file Path to the fixed-width natality file. `NULL` (the default)
 #'   resolves from `NCHS_NAT_PATH` or `NCHS_NAT_PARQUET`; see above.
 #' @param cols Field names to read. The default is every field except FILLER.
