@@ -3,9 +3,9 @@
 **Read and losslessly pack NCHS natality public-use files.**
 
 The [NCHS natality public-use
-file](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm) is a
-fixed-width text file — one record per birth, no delimiters, no quoting.
-That defeats delimiter-sniffing readers such as
+file](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable)
+is a fixed-width text file — one record per birth, no delimiters, no
+quoting. That defeats delimiter-sniffing readers such as
 [`data.table::fread()`](https://rdrr.io/pkg/data.table/man/fread.html).
 `nchsNatality` reads the file by byte position from the official record
 layout, optionally converts it to compact, lossless sharded Parquet (via
@@ -25,37 +25,103 @@ devtools::install("path/to/nchsNatality")
 **Runtime dependencies**: `data.table`, `vroom`.  
 **Parquet functions** additionally require `duckdb` \>= 1.1.0 and `DBI`.
 
-## Quick start
+## Workflow
+
+The package assumes you obtain the data yourself and then convert it
+once to Parquet; everything downstream (your own analysis, and any
+analysis script you share with others) reads from that Parquet
+directory, not from the original download.
+
+1.  **Read the data-use agreement.** Before downloading anything, read
+    the terms at
+    <https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>
+    (and see [Legal](#legal) below).
+
+2.  **Download and unzip the file.** At that same URL, download the
+    “U.S. Data” natality file for the year you want (2025 is the year
+    this package currently bundles a layout for; see
+    [`natality_years()`](https://github.com/vjcitn/nchsNatality/reference/natality_years.md))
+    and unzip it to get the fixed-width `.txt` file.
+
+    ``` r
+
+    library(nchsNatality)
+    f <- "Nat2025PublicUS.c20260624.r20260922.txt"
+    check_natality_file(f)   # sanity-check line endings / record length
+    ```
+
+3.  **Pack it to sharded Parquet.** This is a one-time, lossless
+    conversion (verified by
+    [`natality_pack()`](https://github.com/vjcitn/nchsNatality/reference/natality_pack.md)
+    itself) to a directory of compressed shards that every later step
+    queries directly:
+
+    ``` r
+
+    natality_pack(f, out_dir = "/path/to/nat_parquet")
+    #> Packing 12 shards (DOB_MM 01–12) …
+    #> Verifying … OK
+    ```
+
+4.  **Point the package at that directory.** Either set an environment
+    variable visible to R (e.g. in `.Renviron`), so every call resolves
+    it automatically:
+
+    ``` r
+
+    Sys.setenv(NCHS_NAT_PARQUET = "/path/to/nat_parquet")
+    dt <- read_natality(cols = c("MAGER", "DBWT", "COMBGEST", "SEX", "DOB_MM"))
+    ```
+
+    or pass the location explicitly to a single call, without setting
+    the environment variable:
+
+    ``` r
+
+    dt <- read_natality(parquet_dir = "/path/to/nat_parquet",
+                         cols = c("MAGER", "DBWT", "COMBGEST", "SEX", "DOB_MM"))
+    ```
+
+5.  **Analyze.** For pure data manipulation, query the shards directly
+    with SQL via DuckDB:
+
+    ``` r
+
+    con <- DBI::dbConnect(duckdb::duckdb())
+    DBI::dbExecute(con, "CREATE VIEW nat AS SELECT * FROM '/path/to/nat_parquet/*.parquet'")
+    DBI::dbGetQuery(con, "SELECT SEX, COUNT(*) n FROM nat GROUP BY SEX")
+    ```
+
+    For statistical analysis in R, combine `dplyr` with `arrow`/DuckDB
+    so the heavy lifting runs against the Parquet shards and only the
+    (small) result is pulled into R, then attach value labels with
+    [`label_natality()`](https://github.com/vjcitn/nchsNatality/reference/label_natality.md):
+
+    ``` r
+
+    library(dplyr)
+    nat <- arrow::open_dataset(Sys.glob(file.path(parquet_dir, "*.parquet")))
+    by_sex <- nat |>
+      filter(DBWT != 9999) |>
+      group_by(SEX) |>
+      summarise(n = n(), mean_dbwt = mean(DBWT)) |>
+      collect() |>
+      label_natality(cols = "SEX")
+    ```
+
+    See
+    [`vignette("tidy-parquet-queries")`](https://github.com/vjcitn/nchsNatality/articles/tidy-parquet-queries.md)
+    for a fuller worked example, and
+    [`vignette("variable-dictionary")`](https://github.com/vjcitn/nchsNatality/articles/variable-dictionary.md)
+    for every field and its value labels.
+
+[`natality_unpack()`](https://github.com/vjcitn/nchsNatality/reference/natality_unpack.md)
+reconstructs the original fixed-width file from a Parquet directory, if
+you ever need it back:
 
 ``` r
 
-library(nchsNatality)
-
-f <- "Nat2025PublicUS.c20260624.r20260922.txt"
-
-# 1. Sanity-check the file
-check_natality_file(f)
-#> terminator: CRLF; record length(s) in first 100000 bytes: 1345
-#> (guide documents 1330); '"' bytes: 0
-
-# 2. Read selected fields into a data.table
-dt <- read_natality(f, cols = c("MAGER", "DBWT", "COMBGEST", "SEX", "DOB_MM"))
-
-# 3. Attach value labels (turns character codes into factors)
-dt <- label_natality(dt)
-
-# 4. Pack to sharded Parquet (requires duckdb)
-natality_pack(f, out_dir = "nat_parquet/")
-#> Packing 12 shards (DOB_MM 01–12) …
-#> Verifying … OK
-
-# 5. Query the Parquet directly with duckdb (no unpacking needed)
-con <- DBI::dbConnect(duckdb::duckdb())
-DBI::dbExecute(con, "CREATE VIEW nat AS SELECT * FROM 'nat_parquet/*.parquet'")
-DBI::dbGetQuery(con, "SELECT SEX, COUNT(*) n FROM nat GROUP BY SEX")
-
-# 6. Unpack to a fresh fixed-width file
-natality_unpack("nat_parquet/", "Nat2025_copy.txt")
+natality_unpack("/path/to/nat_parquet", "Nat2025_copy.txt")
 ```
 
 ## Functions

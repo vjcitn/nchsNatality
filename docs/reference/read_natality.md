@@ -25,6 +25,12 @@ read_natality(
 )
 ```
 
+## Source
+
+The fixed-width file itself is downloaded from NCHS at
+<https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+this function reads a copy already on disk and does not download it.
+
 ## Arguments
 
 - file:
@@ -87,7 +93,12 @@ environment": `NCHS_NAT_PARQUET`, if it names a directory with a
 otherwise `NCHS_NAT_PATH` is used. Passing `file` or `parquet_dir`
 explicitly pins the source and skips that resolution. Either way the
 result has the same shape: same columns, same types, same `na_unknown`
-sentinel handling — see `inst/adrs/` for the reasoning.
+sentinel handling — see `inst/adrs/` for the reasoning. Row order is
+**not** part of that contract:
+[`natality_pack()`](https://github.com/vjcitn/nchsNatality/reference/natality_pack.md)
+sorts and shards rows for compression (see its documentation), so
+reading from Parquet returns the same rows as from text, as a set, but
+not necessarily in the same order.
 
 ## Examples
 

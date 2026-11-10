@@ -71,6 +71,12 @@ where the guide puts them (see <code><a href="diagnose_layout.html">diagnose_lay
     </div>
 
     <div class="section level2">
+    <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
+    <p>The fixed-width file itself is downloaded from NCHS at
+<a href="https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable" class="external-link">https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable</a>;
+this function reads a copy already on disk and does not download it.</p>
+    </div>
+    <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
@@ -130,7 +136,10 @@ environment": <code>NCHS_NAT_PARQUET</code>, if it names a directory with a
 <code>NCHS_NAT_PATH</code> is used. Passing <code>file</code> or <code>parquet_dir</code> explicitly pins
 the source and skips that resolution. Either way the result has the same
 shape: same columns, same types, same <code>na_unknown</code> sentinel handling — see
-<code>inst/adrs/</code> for the reasoning.</p>
+<code>inst/adrs/</code> for the reasoning. Row order is <strong>not</strong> part of that
+contract: <code><a href="natality_pack.html">natality_pack()</a></code> sorts and shards rows for compression (see its
+documentation), so reading from Parquet returns the same rows as from
+text, as a set, but not necessarily in the same order.</p>
     </div>
 
     <div class="section level2">

@@ -35,12 +35,30 @@ Main functions:
   [`natality_values()`](https://github.com/vjcitn/nchsNatality/reference/natality_values.md)
   return the layout and the value labels.
 
+## Data source
+
+The natality public-use files themselves are downloaded from NCHS at
+<https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+this package does not bundle or redistribute them.
+
 ## Layout source
 
 "User Guide to the 2025 Natality Public Use File" (NCHS), record layout.
 `data-raw/parse_userguide.py` in the source package regenerates the
 tables and lists the corrections made to errors in the guide.
 
+## See also
+
+Useful links:
+
+- <https://github.com/vjcitn/nchsNatality>
+
+- Report bugs at <https://github.com/vjcitn/nchsNatality/issues>
+
 ## Author
 
 **Maintainer**: Vince Carey <stvjc@channing.harvard.edu>
+
+Authors:
+
+- Vince Carey <stvjc@channing.harvard.edu>

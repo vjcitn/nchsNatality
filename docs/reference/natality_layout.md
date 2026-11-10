@@ -8,6 +8,13 @@ One row per field, including the FILLER blocks, in record order.
 natality_layout(year = 2025, record_length = NULL)
 ```
 
+## Source
+
+The underlying public-use file is downloaded from NCHS at
+<https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+this layout describes its byte positions and is not itself downloaded
+from there.
+
 ## Arguments
 
 - year:

@@ -8,6 +8,13 @@ Value labels of the natality public-use file
 natality_values(year = 2025)
 ```
 
+## Source
+
+The underlying public-use file is downloaded from NCHS at
+<https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm#Downloadable>;
+these value labels describe its codes and are not themselves downloaded
+from there.
+
 ## Arguments
 
 - year:
