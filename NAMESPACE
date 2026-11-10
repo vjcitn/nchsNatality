@@ -17,7 +17,9 @@ export(nchs_nat_parquet_dir)
 export(nchs_nat_path)
 export(read_natality)
 import(data.table)
-importFrom(vroom,col_character)
-importFrom(vroom,cols)
-importFrom(vroom,fwf_positions)
-importFrom(vroom,vroom_fwf)
+importFrom(vroom,
+  col_character,
+  cols,
+  fwf_positions,
+  vroom_fwf
+)

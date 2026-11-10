@@ -38,8 +38,21 @@ this package does not bundle or redistribute them.
 and lists the corrections made to errors in the guide.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/vjcitn/nchsNatality}
+  \item Report bugs at \url{https://github.com/vjcitn/nchsNatality/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Vince Carey \email{stvjc@channing.harvard.edu}
+
+Authors:
+\itemize{
+  \item Vince Carey \email{stvjc@channing.harvard.edu}
+}
 
 }
 \keyword{internal}
