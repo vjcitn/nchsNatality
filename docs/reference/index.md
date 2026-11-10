@@ -25,5 +25,9 @@
   : Check that Parquet shards rebuild the source records exactly
 - [`natality_years()`](https://github.com/vjcitn/nchsNatality/reference/natality_years.md)
   : Years for which a record layout is bundled
+- [`nchs_nat_parquet_dir()`](https://github.com/vjcitn/nchsNatality/reference/nchs_nat_parquet_dir.md)
+  : Derive path to a sharded Parquet directory for birth data
+- [`nchs_nat_path()`](https://github.com/vjcitn/nchsNatality/reference/nchs_nat_path.md)
+  : derive path to text file for birth data
 - [`read_natality()`](https://github.com/vjcitn/nchsNatality/reference/read_natality.md)
   : Read the natality public-use file
